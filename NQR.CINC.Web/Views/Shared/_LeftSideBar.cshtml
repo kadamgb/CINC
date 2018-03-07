@@ -1,0 +1,85 @@
+﻿<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar-wrapper">
+    <div id="leftmenu" class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <ul  class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+            <li class="sidebar-toggler-wrapper">
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler">
+                </div>
+                <!-- END SIDEBAR TOGGLER BUTTON -->
+            </li>
+
+            <li id="dashboard" class="start">
+                @*<a href="http://froiden.cloudapp.net/hrm_demo/admin">*@               
+                <a href="@Url.Action("index", "home")">
+                    <i class="fa fa-home"></i>
+                    <span class="title">Dashboard</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li id="patient" class="">
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Patients</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="@Url.Action("Index", "patient")">
+                            <i class="fa fa-users"></i> Patients List
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="javascript:;">
+                    <i class="fa fa-cogs"></i>
+                    <span class="title">Settings</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="">
+                            <i class="fa  fa-cog"></i>
+                            General Setting
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="">
+                            <i class="fa fa-user"></i>
+                            Profile Setting
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>
+<!-- END SIDEBAR -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // set active link
+        $('#leftmenu li').each(function () {
+            var id = '@ViewData["activelinkId"].ToString()';
+            if ($(this).attr('id') == id) {
+                $('#' + id + ' li').addClass('active');
+                $(this).removeClass('arrow');
+                $(this).addClass('open');
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
+

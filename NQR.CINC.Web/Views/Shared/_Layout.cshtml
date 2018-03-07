@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<html lang="en" class="no-js">
+<head>
+    <title>Oned - Dashboard</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/font-awsone.min.css" />
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/simple-line-icons.min.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/uniform.default.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/bootstrap-swithch.min.css" />
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/select2.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/multi-select.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/fullcalender.css" />
+
+    <!-- BEGIN THEME STYLES -->
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/components.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/plugins.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/layout.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/darkblue.css" />
+
+    <link media="all" type="text/css" rel="stylesheet" href="~/Content/custom.css" />
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Scripts/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/metronic.js"></script>
+    <script src="~/Scripts/layout.js"></script>
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="~/Scripts/bootstrap-switch.min.js"></script>
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/jquery.multi-select.js"></script>
+    <script src="~/Scripts/components-dropdowns.js"></script>
+    <script src="~/Scripts/ui-blockui.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/fullcalendar.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+</head>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner">
+            <!-- BEGIN LOGO -->
+            <div class="page-logo">
+                <a href="javascript:;">                   
+                    <img src="~/Images/onedLogo.png" class="logo-default" height="22px" width="86px" alt="Oned Logo">
+                </a>
+                <div class="menu-toggler sidebar-toggler hide">
+                    <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                </div>
+            </div>
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-default">1</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3><span class="bold">1 pending</span> notifications</h3>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                    <li>
+                                        <a data-toggle="modal" href="#static_leave_requests" onclick="show_application_notification(207);return false;">
+                                            <span class="time">27-Jan-2017</span>
+                                            <span class="details">
+                                                <span class="label label-sm label-icon label-success">
+                                                    <i class="fa fa-bell-o"></i>
+                                                </span>
+                                                <strong>Antonio Lima </strong> has applied for leave on 30-Jan-2017
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                   
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img src="~/Content/images/img_avatar1.png" class="img-circle" alt="small image">
+                            <span id="UserName" class="username username-hide-on-mobile">
+                               
+                                @Session["CurrentLoggedInUser"].ToString()
+                                                
+                            </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i> My Profile
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-lock"></i> Lock Screen
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Login")">
+                                    <i class="icon-logout"></i> Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END HEADER INNER -->
+    </div>
+    <!-- END HEADER -->
+    <div class="clearfix">
+    </div>
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        @RenderPage("_LeftSideBar.cshtml")
+        <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <!-- BEGIN PAGE HEADER-->
+
+                <h3 class="page-title">
+                    @ViewBag.Title
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">                        
+                        <li>                          
+                            <a href="@Url.Action("index", "home")">
+                                <i class="fa fa-home"></i>
+                                <span class="title">Home</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            @ViewBag.MenuTitle
+                            @* If SubMenuTitle is blank then it is showing extra > in breadcrum. to avoid this below if condition is written *@
+                            @if (!string.IsNullOrEmpty(ViewBag.SubMenuTitle))
+                            {
+                            <i class="fa fa-angle-right"></i>
+                            }
+                        </li>
+                        <li>
+
+                            <a href="#">@ViewBag.SubMenuTitle</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END PAGE HEADER-->
+                @RenderBody()
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2017 &copy; APP
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+</body>
+<!-- END BODY -->
+</html>
+
+<script>
+    jQuery(document).ready(function () {
+        Metronic.init(); // init metronic core componets
+        Layout.init(); // init layout       
+    });   
+</script>
+
+

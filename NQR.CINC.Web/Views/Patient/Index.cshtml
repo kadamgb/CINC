@@ -1,0 +1,77 @@
+﻿@model List<NQR.CINC.Web.Models.PatientModel>
+@using NQR.CINC.Web.App_Code
+@using NQR.CINC.Web.Infrastructure
+@using GlobalResource = Resources.GlobalResource
+
+@{
+    ViewBag.Title = MvcHtmlString.Create("Patients <small>Patients List</small>");
+    ViewBag.MenuTitle = @Html.ActionLink("Patients", "index", "patient");
+    ViewBag.SubMenuTitle = "Patients List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/application.css" rel="stylesheet" />
+@{
+
+    var gdAllPatients = new WebGrid(Model, canPage: true, canSort: false, rowsPerPage: AppGlobals.GridPageSize(), selectionFieldName: "selectedRow",
+        fieldNamePrefix: "allPatients", pageFieldName: "Page");
+}
+
+
+<a href="@Url.Action("Create","Patient")" class="btn green">
+    Add New Patient <i class="fa fa-plus"></i> 
+</a>
+
+<hr />
+
+<!-- Patient list table -->
+
+<div class="portlet box blue">
+
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-users"></i>Patients List
+        </div>
+        <div class="tools">
+        </div>
+    </div>
+    <div class="portlet-body">
+        @if (Model.Count() > 0)
+        {
+            <div id="gridPatient" class="table-responsive no-border">
+                @{
+                    var gridColumns = new List<WebGridColumn>();
+                    gridColumns.Add(gdAllPatients.Column("FirstName", "First Name"));
+                    gridColumns.Add(gdAllPatients.Column("LastName", "Last Name"));
+                    gridColumns.Add(gdAllPatients.Column("Mobile", "Mobile"));
+                    gridColumns.Add(gdAllPatients.Column("DateOfBirth", "Date Of Birth"));
+                }
+                @gdAllPatients.Table(columns: gdAllPatients.Columns(gridColumns.ToArray()), tableStyle: "table table-striped table-hover")
+
+                @*<div class="pagination pagination-sm pagination-left">
+                    @gdAllPatients.PagerList(mode: WebGridPagerModes.All)
+                </div>*@
+
+
+                @if (Model.Count() > AppGlobals.GridPageSize())
+                {
+                    <div class="pagination pagination-sm pagination-left">
+                        @gdAllPatients.PagerList(mode: WebGridPagerModes.All)
+                    </div>
+                }
+
+            </div>
+                    }
+                    else
+                    {
+                        <p>  @GlobalResource.NoRecordsFound </p>
+                    }
+
+
+
+    </div>    
+</div>
+
+
+
+

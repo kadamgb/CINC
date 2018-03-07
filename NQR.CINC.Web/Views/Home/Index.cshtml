@@ -1,0 +1,50 @@
+﻿@model List<NQR.CINC.Web.Models.RegisterUserViewModel>
+@using GlobalResource = Resources.GlobalResource
+@using NQR.CINC.Web.App_Code
+@using NQR.CINC.Web.Infrastructure
+@{
+    ViewBag.Title = MvcHtmlString.Create("Dashboard <small>reports &amp; statistics</small>");    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.MenuTitle = @Html.ActionLink("Dashboard", "index", "home");
+    ViewBag.SubMenuTitle = "";
+
+    // new ViewDataDictionary { { "MainMenu", "Home" }, { "activeLinkId", "patient" } };
+}
+
+<link href="~/Content/application.css" rel="stylesheet" />
+@{
+
+    var gdAllCollections = new WebGrid(Model, canPage: true, canSort: false, rowsPerPage: AppGlobals.GridPageSize(), selectionFieldName: "selectedRow", fieldNamePrefix: "allUsers", pageFieldName: "Page");
+}
+
+@if (Model.Count() > 0)
+{
+    @*Grid view showing all Publications currently under revision*@
+    <div id="gridContentModifiedByCurrentUser" class="table-responsive no-border">
+        @{
+            var gridColumns = new List<WebGridColumn>();
+
+            gridColumns.Add(gdAllCollections.Column("UserName", "UserName"));
+            gridColumns.Add(gdAllCollections.Column("Email", "Email"));
+        }
+        @gdAllCollections.Table(columns: gdAllCollections.Columns(gridColumns.ToArray()), tableStyle: "table table-striped table-hover")
+        @*@if (Model.Count() > AppGlobals.GridPageSize())
+            {*@
+        <div class="pagination pagination-sm pagination-left">
+            @gdAllCollections.PagerList(mode: WebGridPagerModes.All)
+        </div>
+        @*}
+            else
+            {
+            <p>    @GlobalResource.NoRecordsFound </p>
+            }*@
+    </div>
+}
+else
+{
+    <p>  @GlobalResource.NoRecordsFound </p>
+}
+
+
+
