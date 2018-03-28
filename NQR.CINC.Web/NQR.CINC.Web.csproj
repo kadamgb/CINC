@@ -282,8 +282,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\logo.png" />
-    <Content Include="Images\onedLogo.png" />
+    <Content Include="Images\onedlogo.png" />
+    <Content Include="Images\OriginalLogo.png" />
     <Content Include="Images\sidebar_toggler_icon_darkblue.png" />
     <Content Include="Images\toggler_icon.jpg" />
     <Content Include="Scripts\analytics.js" />
@@ -357,6 +357,7 @@
     </Content>
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Shared\_LeftSideBar.cshtml" />
+    <Content Include="Views\Patient\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NQR.CINC.DependencyInjection\NQR.CINC.DependencyInjection.csproj">
