@@ -29,12 +29,23 @@ namespace NQR.CINC.Web.Controllers
             return View("Error");
         }
 
-        
+
+        /// <summary>
+        /// Create/Add new Patient
+        /// </summary>
+        /// <returns></returns>                
         public ActionResult Create()
         {
             ViewData["activelinkId"] = "patient";
             return View();
         }
-        
+        [HttpPost]
+        public ActionResult Create(PatientModel patientModel)
+        {
+
+            ViewData["activelinkId"] = "patient";
+            return View();
+        }
+
     }
 }
