@@ -1,7 +1,6 @@
-﻿
-@{
-    ViewBag.Title = "Create";
+﻿@{
+	ViewBag.Title = MvcHtmlString.Create("Patients <small>Add New Patient</small>");
+	ViewBag.MenuTitle = @Html.ActionLink("Patients", "index", "patient");
+	ViewBag.SubMenuTitle = "Add new Patient";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Create</h2>
-

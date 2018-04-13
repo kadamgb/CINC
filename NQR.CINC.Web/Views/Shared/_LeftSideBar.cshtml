@@ -71,8 +71,9 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // set active link
-        $('#leftmenu li').each(function () {
-            var id = '@ViewData["activelinkId"].ToString()';
+    	$('#leftmenu li').each(function () {
+    		var activelinkId = '@ViewData["activelinkId"]';
+    		var id = isEmpty(activelinkId) ? '' : activelinkId.toString();
             if ($(this).attr('id') == id) {
                 $('#' + id + ' li').addClass('active');
                 $(this).removeClass('arrow');
@@ -81,5 +82,11 @@
             }
         });
     });
+
+	function isEmpty(val){
+		return (val === undefined || val == null || val.length <= 0) ? true : false;
+	}
 </script>
+
+
 

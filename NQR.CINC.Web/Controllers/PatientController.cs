@@ -32,6 +32,7 @@ namespace NQR.CINC.Web.Controllers
         
         public ActionResult Create()
         {
+            ViewData["activelinkId"] = "patient";
             return View();
         }
         
